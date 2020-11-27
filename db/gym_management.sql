@@ -13,6 +13,7 @@ CREATE TABLE members (
 CREATE TABLE fitness_classes(
     id SERIAL PRIMARY KEY,
     title VARCHAR(255),
+    duration INT,
     type VARCHAR(255)   
 );
 
