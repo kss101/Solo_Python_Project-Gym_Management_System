@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+    {% block content %}
+    <h2>Fitness Classes</h2>
+    {% for fitness_class in fitness_classes %}
+        <section>
+            <ul>
+                <li>Class: {{ fitness_class.title }}</li>
+                <li>Type: {{ fitness_class.type }}</li>
+                <li>Duration: {{ fitness_class.duration}}mins</li>
+                <hr />
+            </ul>
+        </section>
+    {% endfor %}
+{% endblock %}
