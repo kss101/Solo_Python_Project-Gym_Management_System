@@ -7,6 +7,7 @@ def save(fitness_class):
     results = run_sql(sql, values)
     id = results[0]['id']
     fitness_class.id = id
+    return fitness_class
 
 def select_all():
     fitness_classes = []

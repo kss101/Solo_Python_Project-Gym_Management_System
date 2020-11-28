@@ -1,15 +1,8 @@
 {% extends "base.html" %}
     {% block content %}
-    <h2>Members</h2>
-    {% for member in members %}
-        <section>
-            <ul>
-                <li>Fist Name: {{ member.first_name }}</li>
-                <li>Last Name: {{ member.last_name }}</li>
-                <li>D.o.B: {{ member.date_of_birth }}</li>
-                <li>Membership No: {{ member.membership_num}}</li>
-                <hr />
-            </ul>
-        </section>
-    {% endfor %}
+    <h2>Members Area</h2>
+    <p>Would you like to: </p>
+    <a href="members/new">Add New Member</a>
+    <a href="members/all">View Members</a>
+
 {% endblock %}

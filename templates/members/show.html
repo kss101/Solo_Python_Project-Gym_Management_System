@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+    {% block content %}
+    <h2>View Member</h2>
+
+        <section>
+            <ul>
+                <li>Fist Name: {{ member.first_name }}</li>
+                <li>Last Name: {{ member.last_name }}</li>
+                <li>D.o.B: {{ member.date_of_birth }}</li>
+                <li>Membership No: {{ member.membership_num }}</li>
+                <a href="/members/{{ member.id }}/bookings">View class bookings...</a>
+                <hr />
+            </ul>
+            <form action="/members/{{ member.id }}/delete" method="POST">
+                <button type="submit">CANCEL Membership</button>
+            </form>
+        </section>
+{% endblock %}

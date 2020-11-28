@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+    {% block content %}
+    <h2>Add New Member</h2>
+    <p>To add a new member to the system, please enter the following details:</p>
+    <p>{{message}}</p>
+        <section>
+            <form action="/members" method="POST">
+                <div>
+                    <label for="first_name">First Name:</label>
+                    <input type="text" 
+                        name="first_name"
+                        id="first_name" 
+                        placeholder="First Name..." 
+                        required 
+                        autofocus>
+                </div>
+                <div>
+                    <label for="last_name">Last Name:</label>
+                    <input type="text" 
+                        name="last_name"
+                        id="last_name" 
+                        placeholder="Last Name..." 
+                        required>
+                </div>
+                <div>
+                    <label for="date_of_birth">D.o.B.:</label>
+                    <input type="date" 
+                        name="date_of_birth"
+                        id="date_of_birth" 
+                        required>
+                </div>
+                <div>
+                    <label for="membership_num">Membership No.:</label>
+                    <input type="number" 
+                        name="membership_num"
+                        id="membership_num" 
+                        placeholder="" 
+                        required>
+                </div>
+                <button type="submit">Add New Member</button>
+            </form>
+        </section>
+{% endblock %}

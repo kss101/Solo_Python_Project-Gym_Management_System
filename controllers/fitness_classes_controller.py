@@ -3,6 +3,7 @@ from flask import Blueprint, Flask, redirect, render_template, request
 from models.fitness_class import FitnessClass
 import repositories.fitness_class_repository as fitness_class_repository
 
+
 fitness_classes_blueprint = Blueprint("fitness_classes", __name__)
 
 # INDEX
