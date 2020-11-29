@@ -52,7 +52,6 @@ def bookings(member):
     sql = "SELECT fitness_classes.* FROM fitness_classes INNER JOIN fitness_class_member_bookings ON fitness_class_member_bookings.fitness_class_id = fitness_classes.id WHERE member_id = %s"
     values = [member.id]
     results = run_sql(sql, values)
-    print(member.first_name)
     for row in results:
         fitness_class = FitnessClass(row['title'], row['type'], row['duration'], row['id'] )
         print(fitness_class.title)

@@ -18,6 +18,25 @@ def select_all():
         fitness_classes.append(fitness_class)
     return fitness_classes
 
+def select(id):
+    fitness_class = None
+    sql = "SELECT * FROM fitness_classes WHERE id = %s"
+    values = [id]
+    result = run_sql(sql, values)[0]
+    if result is not None:
+        fitness_class = FitnessClass(result['title'], result['type'], result['duration'], result['id'] )
+    return fitness_class
+
+def update(fitness_class):
+    sql = "UPDATE fitness_classes SET (first_name, last_name, date_of_birth, membership_num) = (%s, %s, %s, %s) WHERE id = %s"
+    values = [fitness_class.title, fitness_class.type, fitness_class.duration, fitness_class.id]
+    run_sql(sql, values)
+
 def delete_all():
     sql = "DELETE FROM fitness_classes"
     run_sql(sql)
+
+def delete(id):
+    sql = "DELETE FROM fitness_classes WHERE id = %s"
+    values = [id]
+    run_sql(sql, values)

@@ -1,6 +1,8 @@
 {% extends "base.html" %}
     {% block content %}
     <h2>Fitness Classes</h2>
+    <p>Would you like to: </p>
+    <a href="classes/new">Add New Class</a>
     {% for fitness_class in fitness_classes %}
         <section>
             <ul>

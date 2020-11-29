@@ -36,7 +36,6 @@ def create_member():
     date_of_birth = request.form['date_of_birth']
     membership_num = request.form['membership_num']
     membership_num_check = member_repository.check_membership_num_exists(membership_num)
-    print("Found the following: ", membership_num_check)
     if membership_num_check == False:
         member = Member(first_name, last_name, date_of_birth, membership_num)
         member_repository.save(member)
@@ -45,12 +44,25 @@ def create_member():
         message = "Membership no." + membership_num + " is already in use. Please try again"
         return  render_template("members/new.html", message=message)
 
-# Class Bookings
-@members_blueprint.route("/members/<id>/bookings/")
-def bookings(id):
+
+# EDIT
+@members_blueprint.route("/members/<id>/edit")
+def edit_member(id):
     member = member_repository.select(id)
-    bookings = member_repository.bookings(member)
-    return render_template("members/bookings.html", bookings=bookings, member=member)
+    return render_template('members/edit.html', member=member)
+
+
+# UPDATE
+@members_blueprint.route("/members/<id>", methods=["POST"])
+def update_member(id):
+    first_name = request.form['first_name']
+    last_name = request.form['last_name']
+    date_of_birth = request.form['date_of_birth']
+    membership_num = request.form['membership_num']
+    member = Member(first_name, last_name, date_of_birth, membership_num, id)
+    member_repository.update(member)
+    return render_template("/members/show.html", member=member)
+
 
 # Delete a member from the system
 @members_blueprint.route("/members/<id>/delete", methods=["POST"])

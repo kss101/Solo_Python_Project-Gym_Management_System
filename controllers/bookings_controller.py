@@ -10,3 +10,10 @@ bookings_blueprint = Blueprint("bookings", __name__)
 @bookings_blueprint.route("/bookings/new")
 def booking():
     return render_template("bookings/new.html")
+
+# Class Bookings
+@bookings_blueprint.route("/members/<id>/bookings/")
+def bookings(id):
+    member = member_repository.select(id)
+    bookings = member_repository.bookings(member)
+    return render_template("members/bookings.html", bookings=bookings, member=member)
