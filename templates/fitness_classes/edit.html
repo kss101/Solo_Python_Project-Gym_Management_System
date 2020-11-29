@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+    {% block content %}
+    <h2>Add New Fitness Class</h2>
+    <p>To add a new class to the system, please enter the following details:</p>
+    <p>{{message}}</p>
+        <section>
+            <form action="/classes/{{ fitness_class.id }}" method="POST">
+                <div>
+                    <label for="title">Title:</label>
+                    <input type="text" 
+                        name="title"
+                        id="title" 
+                        value={{fitness_class.title}}
+                        required 
+                        autofocus>
+                </div>
+                <div>
+                    <label for="type">Type:</label>
+                    <select name="type" id="type">
+                        {% if fitness_class.type == "Cardio" %}
+                            <option value="Cardio" selected>Cardio</option>
+                        {% else %}
+                            <option value="Cardio">Cardio</option>
+                        {% endif %}
+                        {% if fitness_class.type == "Gym Floor" %}
+                            <option value="Gym Floor" selected>Gym Floor</option>
+                        {% else %}
+                            <option value="Gym Floor">Gym Floor</option>
+                        {% endif %}
+                        {% if fitness_class.type == "HIIT" %}
+                            <option value="HIIT" selected>HIIT</option>
+                        {% else %}
+                            <option value="HIIT">HIIT</option>
+                        {% endif %}
+                        {% if fitness_class.type == "LIIT" %}
+                            <option value="LITT" selected>LIIT</option>
+                        {% else %}
+                            <option value="LITT">LIIT</option>
+                        {% endif %}
+                    </select>
+                </div>
+                <div>
+                    <label for="duration">Duration:</label>
+                    <input type="number" 
+                        name="duration"
+                        id="duration" 
+                        value={{fitness_class.duration}}
+                        required>
+                </div>
+                <button type="submit">Save Changes</button>
+            </form>
+        </section>
+{% endblock %}

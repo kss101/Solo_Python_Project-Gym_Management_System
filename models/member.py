@@ -6,6 +6,6 @@ class Member:
         self.membership_num  = membership_num
         self.id = id
 
-    def full_name(self, first_name, last_name):
+    def full_name(self):
         full_name = self.first_name + ' ' + self.last_name
         return full_name

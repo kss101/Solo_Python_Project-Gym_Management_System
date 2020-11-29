@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+    {% block content %}
+    <h2>Fitness Classes</h2>
+    <p>Would you like to: </p>
+    <a href="/classes/new">Add New Class</a>
+    {% for fitness_class in fitness_classes %}
+        <section>
+            <ul>
+                <li>Class: {{ fitness_class.title }}</li>
+                <li>Type: {{ fitness_class.type }}</li>
+                <li>Duration: {{ fitness_class.duration}}mins</li>
+                <a href="/classes/{{ fitness_class.id }}/show">View class details...</a>
+                <a href="/classes/{{ fitness_class.id }}/bookings">View class bookings...</a>
+                <hr />
+            </ul>
+        </section>
+    {% endfor %}
+{% endblock %}

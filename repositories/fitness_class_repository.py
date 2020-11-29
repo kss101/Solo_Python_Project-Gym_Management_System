@@ -28,7 +28,7 @@ def select(id):
     return fitness_class
 
 def update(fitness_class):
-    sql = "UPDATE fitness_classes SET (first_name, last_name, date_of_birth, membership_num) = (%s, %s, %s, %s) WHERE id = %s"
+    sql = "UPDATE fitness_classes SET (title, type, duration = (%s, %s, %s) WHERE id = %s"
     values = [fitness_class.title, fitness_class.type, fitness_class.duration, fitness_class.id]
     run_sql(sql, values)
 

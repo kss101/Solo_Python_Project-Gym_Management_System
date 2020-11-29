@@ -1,4 +1,16 @@
 {% extends "base.html" %}
 {% block content %}
-Welcome to bookings
+<h2>Fitness Class Booking for {{member.full_name()}}</h2>
+<p>Please select Fitness Class...</p>
+<section>
+        <ul>
+            {% for fitness_class in fitness_classes %}
+            <form action="/members/{{ member.id }}/bookings/" method="POST">
+                <li>{{ fitness_class.title}}<input type="hidden" name="fitness_class" id="fitness_class" value="{{ fitness_class.id }}"><button type="submit">Book {{ fitness_class.id }} Class</button></li>
+            </form>
+            {% endfor %}
+        </ul>
+
+
+</section>
 {% endblock %}

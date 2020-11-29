@@ -12,3 +12,8 @@ def save(booking):
 def delete_all():
     sql = "DELETE FROM fitness_class_member_bookings"
     run_sql(sql)
+
+def delete(id):
+    sql = "DELETE FROM fitness_class_member_bookings WHERE id = %s"
+    values = [id]
+    run_sql(sql, values)

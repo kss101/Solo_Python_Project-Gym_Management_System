@@ -28,7 +28,7 @@ def show_member(id):
 def new_member():
     return render_template("members/new.html")
 
-# POST '/members' --> handle the POST from the new memebr form
+# POST '/members' --> handle the POST from the new memeber form
 @members_blueprint.route("/members", methods=["POST"])
 def create_member():
     first_name = request.form['first_name']
@@ -61,7 +61,7 @@ def update_member(id):
     membership_num = request.form['membership_num']
     member = Member(first_name, last_name, date_of_birth, membership_num, id)
     member_repository.update(member)
-    return render_template("/members/show.html", member=member)
+    return render_template("members/show.html", member=member)
 
 
 # Delete a member from the system

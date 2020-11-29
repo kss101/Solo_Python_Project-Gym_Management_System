@@ -48,15 +48,17 @@ def update(member):
 
 def bookings(member):
     fitness_classes = []
+    bookings = []
 
-    sql = "SELECT fitness_classes.* FROM fitness_classes INNER JOIN fitness_class_member_bookings ON fitness_class_member_bookings.fitness_class_id = fitness_classes.id WHERE member_id = %s"
+    sql = "SELECT fitness_class_member_bookings.id AS booking_id, fitness_classes.* FROM fitness_classes INNER JOIN fitness_class_member_bookings ON fitness_class_member_bookings.fitness_class_id = fitness_classes.id WHERE member_id = %s"
     values = [member.id]
     results = run_sql(sql, values)
     for row in results:
         fitness_class = FitnessClass(row['title'], row['type'], row['duration'], row['id'] )
-        print(fitness_class.title)
         fitness_classes.append(fitness_class)
-    return fitness_classes
+        bookings.append(row['booking_id'])
+
+    return (fitness_classes, bookings)
 
 def delete_all():
     sql = "DELETE FROM members"
