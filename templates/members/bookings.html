@@ -6,10 +6,11 @@
 
     {% for fitness_class in fitness_classes %}
             <ul>
+                <li>Booking No. {{bookings[fitness_classes.index(fitness_class)]}}</li>
                 <li>Title: {{ fitness_class.title}}</li>
                 <li>Type: {{ fitness_class.type }}</li>
-                <li>Duration: {{ fitness_class.duration }}</li>
-                <form action="/bookings/{{ bookings[fitness_classes.index(fitness_class)]}}/delete" method="POST">
+                <li>Duration: {{ fitness_class.duration }} mins</li>
+                <form action="/bookings/{{ bookings[fitness_classes.index(fitness_class)] }}/delete" method="POST">
                     <button type="submit">CANCEL Booking</button>
                 </form>
                 <hr />

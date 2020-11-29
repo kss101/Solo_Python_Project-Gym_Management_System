@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Blueprint, Flask, redirect, render_template, request
 
 from controllers.members_controller import members_blueprint
 from controllers.fitness_classes_controller import fitness_classes_blueprint

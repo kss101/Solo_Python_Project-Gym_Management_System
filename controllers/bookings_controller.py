@@ -19,6 +19,14 @@ def bookings(id):
     bookings = member_repository.bookings(member)[1]
     return render_template("/members/bookings.html", bookings=bookings, fitness_classes=fitness_classes, member=member)
 
+# View a Fitness Class' Booked Members
+@bookings_blueprint.route("/classes/<id>/bookings/")
+def bookings_members(id):
+    fitness_class = fitness_class_repository.select(id)
+    members = booking_repository.get_fitness_class_bookings(fitness_class)[0]
+    bookings = booking_repository.get_fitness_class_bookings(fitness_class)[1]
+    return render_template("/fitness_classes/bookings.html", bookings=bookings, fitness_class=fitness_class, members=members)
+
 # Add New Fitness Class Booking
 # GET '/bookings/new' --> show html form to create a new booking
 @bookings_blueprint.route("/bookings/<id>/new", methods=["GET"])
@@ -31,19 +39,17 @@ def new_booking(id):
 @bookings_blueprint.route("/members/<id>/bookings/", methods=["POST"])
 def create_bookins(id):
     member = member_repository.select(id)
-    print("Class Id is: ", request.form['fitness_class'])
     fitness_class_id = request.form['fitness_class']
     booking = Booking(member.id, fitness_class_id)
     booking_repository.save(booking)
-    bookings = member_repository.bookings(member)
-    fitness_classes = member_repository.bookings(member)[0]
-    # return render_template("/members/bookings.html", bookings=bookings, member=member)
-    return render_template("/members/bookings.html", bookings=bookings, fitness_classes=fitness_classes, member=member)
+    # bookings = member_repository.bookings(member)
+    # fitness_classes = member_repository.bookings(member)[0]
+    # # return render_template("/members/bookings.html", bookings=bookings, fitness_classes=fitness_classes, member=member)
+    return redirect("/members/all")
 
 
 # Delete a Member's Fitness Class booking from the system
 @bookings_blueprint.route("/bookings/<id>/delete", methods=["POST"])
-def delete_member(id):
-    print("ID is ", id)
+def delete_booking(id):
     booking_repository.delete(id)
-    return redirect("/members")
+    return redirect("/members/all")
