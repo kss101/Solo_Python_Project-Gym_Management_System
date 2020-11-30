@@ -35,12 +35,11 @@ def get_fitness_class_bookings(fitness_class):
     members= []
     bookings = []
 
-    sql = "SELECT fitness_class_member_bookings.id AS booking_id, members.* FROM members INNER JOIN fitness_class_member_bookings ON fitness_class_member_bookings.member_id = member.id WHERE fitness_class.id = %s"
+    sql = "SELECT fitness_class_member_bookings.id AS booking_id, members.* FROM members INNER JOIN fitness_class_member_bookings ON fitness_class_member_bookings.member_id = members.id WHERE fitness_class_id = %s"
     values = [fitness_class.id]
     results = run_sql(sql, values)
     for row in results:
-        member = Member(row['title'], row['type'], row['duration'], row['id'] )
+        member = Member(row['first_name'], row['last_name'], row['date_of_birth'], row['membership_num'], row['id'] )
         members.append(member)
         bookings.append(row['booking_id'])
-
     return (members, bookings)

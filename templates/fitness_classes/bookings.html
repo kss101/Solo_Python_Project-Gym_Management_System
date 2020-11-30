@@ -3,12 +3,10 @@
     <h2>Members Booked In for {{fitness_class.title}}</h2>
     <p>The following members have booked a slot in the {{fitness_class.title}} class:</p>
     <section>
-
     {% for member in members %}
             <ul>
-                <li>Name. </li>
-                <li>Membership No:</li>
-
+                <li>Name. {{ member.full_name()}}</li>
+                <li>Membership No: {{ member.membership_num}}</li>
                 <hr>
             </ul>
     {% endfor %}

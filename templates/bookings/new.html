@@ -6,7 +6,7 @@
         <ul>
             {% for fitness_class in fitness_classes %}
             <form action="/members/{{ member.id }}/bookings/" method="POST">
-                <li>{{ fitness_class.title}}<input type="hidden" name="fitness_class" id="fitness_class" value="{{ fitness_class.id }}"><button type="submit">Book {{ fitness_class.id }} Class</button></li>
+                <li>{{ fitness_class.title}}<input type="hidden" name="fitness_class" id="fitness_class" value="{{ fitness_class.id }}"><button type="submit">Book {{ fitness_class.title }} Class</button></li>
             </form>
             {% endfor %}
         </ul>
