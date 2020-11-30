@@ -1,17 +1,22 @@
 {% extends "base.html" %}
     {% block content %}
     <h2>View All Members</h2>
-    <ul>
+    <section>
+    <ul class="list_members">
         {% for member in members %}
             <li class="row">
                 <ul>
-                    <li>First Name: {{ member.first_name }}</li>
-                    <li>Last Name: {{ member.last_name }}</li>
+                    <li>Full Name: {{ member.full_name() }}</li>
                     <li>Membership No: {{ member.membership_num }}</li>
-                    <a href="/members/{{ member.id }}/show">View member details...</a>
-                    <a href="/members/{{ member.id }}/bookings">View class bookings...</a>
+                    <nav>
+                        <ul class="sub_menu">
+                            <li><a class="sub" href="/members/{{ member.id }}/show">View member details...</a></li>
+                            <li><a class="sub" href="/members/{{ member.id }}/bookings">View class bookings...</a></li>
+                        </ul>
+                    </nav>
                 </ul>
             </li>
         {% endfor %}
     </ul>
+</section>
 {% endblock %}

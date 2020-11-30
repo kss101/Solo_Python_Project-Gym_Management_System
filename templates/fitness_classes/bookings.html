@@ -2,7 +2,8 @@
     {% block content %}
     <h2>Members Booked In for {{fitness_class.title}}</h2>
     <p>The following members have booked a slot in the {{fitness_class.title}} class:</p>
-    <ul>
+    <section>
+    <ul class="list_members">
         {% for member in members %}
             <li class="row">  
                 <ul>
@@ -12,4 +13,5 @@
             </li>
         {% endfor %}
     </ul>
+</section>
 {% endblock %}

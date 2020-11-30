@@ -3,23 +3,7 @@ body {
     font-family: Arial, Helvetica, sans-serif;
 }
 
-a, a:link, a:visited {
-    border-style: solid;
-    border-radius: 30px;
-    border-width: 2px;
-    border-color: #2f2504;
-    padding: 5px;
-    background-color: #594e36;
-    color: gainsboro;
-    text-decoration: none;
-}
-
-a:hover, a:active, a:focus {
-    background-color: #7e846b;
-
-}
-
-nav {
+body > header > nav {
     width: 102%;
     background-color: #A5AE9E;
     display: flex;
@@ -28,7 +12,6 @@ nav {
     margin-top: -10px;
     margin-right: 50px;
     margin-left: -10px;
-    /* margin-left: 15px; */
     border: 1px solid #bbb;
 }
 
@@ -57,19 +40,75 @@ nav > ul.menu > li > a {
     border-radius: 0;
 }
 
+nav > ul.sub_menu  {
+    list-style-type: none;
+    margin: 0;
+    margin-left: 25px;
+    padding: 0;
+    display: flex;
+    justify-content: flex-end;
+}
+
+nav > ul.menu > li > a.sub {
+    display: block;
+    padding: 5px 5px;
+    text-decoration: none;
+    border-style: none;
+    background-color:  #7E846B;
+}
+
 nav > ul.menu > li > a:hover, a:active, a:focus {
     background-color: #A5AE9E;
     color: #2F2504;
 }
 
+nav > ul.menu > li > a:visited {
+    color: #D0DDD7;
+}
+
 li {
     list-style-type: none;
 }
+
 li.row:nth-child(even) {
-    background-color: #a5ae9e;
+    background-color: #D0DDD7;
+    color: #2F2504;
 }
 
 li.row:nth-child(odd) {
-    background-color: #7e846b;
-    color: #d0ddd7;
+    background-color: #A5AE9E;
+    color: #2F2504;
+}
+
+ul.list_classes {
+    padding: 0;
+    margin: 0;
+}
+
+li.fitness_class {
+    display: flex;
+    font-size: 14pt;
+    justify-content: space-between;
+    margin: 0;
+}
+
+li.fitness_class button {
+    margin-right: 30px;
+}
+
+ul.list_members {
+    padding: 0;
+    margin: 0;
+}
+
+
+.row {
+    padding: 10px 0 10px 0;
+    margin: 0;
+}
+
+section {
+    margin: auto;
+    width: 75%;
+    border: 1px solid #594E36;
 }
