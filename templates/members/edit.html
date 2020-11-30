@@ -5,40 +5,38 @@
     <p>{{message}}</p>
         <section>
             <form action="/members/{{member.id}}" method="POST">
-                <div>
-                    <label for="first_name">First Name:</label>
-                    <input type="text" 
-                        name="first_name"
-                        id="first_name" 
-                        value={{member.first_name}}
-                        required 
-                        autofocus>
-                </div>
-                <div>
-                    <label for="last_name">Last Name:</label>
-                    <input type="text" 
-                        name="last_name"
-                        id="last_name" 
-                        value={{member.last_name}}
-                        required>
-                </div>
-                <div>
-                    <label for="date_of_birth">D.o.B.:</label>
-                    <input type="date" 
-                        name="date_of_birth"
-                        id="date_of_birth" 
-                        value={{member.date_of_birth}}
-                        required>
-                </div>
-                <div>
-                    <label for="membership_num">Membership No.:</label>
-                    <input type="number" 
-                        name="membership_num"
-                        id="membership_num" 
-                        value={{member.membership_num}}
-                        required>
-                </div>
-                <button type="submit">Save Changes</button>
+                <label for="first_name">First Name:</label><br>
+                <input type="text" 
+                    name="first_name"
+                    id="first_name" 
+                    value={{member.first_name}}
+                    required 
+                    autofocus>
+                    <br>
+
+                <label for="last_name">Last Name:</label><br>
+                <input type="text" 
+                    name="last_name"
+                    id="last_name" 
+                    value={{member.last_name}}
+                    required>
+                    <br>
+                <label for="date_of_birth">D.o.B.:</label><br>
+                <input type="date" 
+                    name="date_of_birth"
+                    id="date_of_birth" 
+                    value={{member.date_of_birth}}
+                    required>
+                    <br>
+                <label for="membership_num">Membership No.:</label><br>
+                <input type="number" 
+                    name="membership_num"
+                    id="membership_num" 
+                    value={{member.membership_num}}
+                    required>
+         
+                <input type="submit" value="Save Changes">
+
             </form>
         </section>
 {% endblock %}

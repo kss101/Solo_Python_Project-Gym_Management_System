@@ -8,12 +8,18 @@
                 <li>Last Name: {{ member.last_name }}</li>
                 <li>D.o.B: {{ member.date_of_birth }}</li>
                 <li>Membership No: {{ member.membership_num }}</li>
-                <a href="/members/{{ member.id }}/bookings">View class bookings...</a>
-                <a href="/members/{{ member.id }}/edit">Edit/Update Member details...</a>
-                <hr />
+
             </ul>
-            <form action="/members/{{ member.id }}/delete" method="POST">
-                <button type="submit">CANCEL Membership</button>
-            </form>
+            <nav>
+                <ul class="sub_menu">
+                    <li><a href="/members/{{ member.id }}/bookings">View class bookings...</a></li>
+                    <li><a href="/members/{{ member.id }}/edit">Edit/Update Member details...</a></li>
+                    <li>
+                        <form action="/members/{{ member.id }}/delete" method="POST">
+                            <button type="submit">CANCEL Membership</button>
+                        </form>
+                    </li>
+                </ul>
+            </nav>
         </section>
 {% endblock %}

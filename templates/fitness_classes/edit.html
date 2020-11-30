@@ -5,17 +5,16 @@
     <p>{{message}}</p>
         <section>
             <form action="/classes/{{ fitness_class.id }}" method="POST">
-                <div>
-                    <label for="title">Title:</label>
+
+                    <label for="title">Title:</label><br>
                     <input type="text" 
                         name="title"
                         id="title" 
                         value={{fitness_class.title}}
                         required 
                         autofocus>
-                </div>
-                <div>
-                    <label for="type">Type:</label>
+                    <br>
+                    <label for="type">Type:</label><br>
                     <select name="type" id="type">
                         {% if fitness_class.type == "Cardio" %}
                             <option value="Cardio" selected>Cardio</option>
@@ -38,16 +37,14 @@
                             <option value="LITT">LIIT</option>
                         {% endif %}
                     </select>
-                </div>
-                <div>
-                    <label for="duration">Duration:</label>
+                    <br>
+                    <label for="duration">Duration:</label><br>
                     <input type="number" 
                         name="duration"
                         id="duration" 
                         value={{fitness_class.duration}}
                         required>
-                </div>
-                <button type="submit">Save Changes</button>
+                <input type="submit" value="Save Changes">
             </form>
         </section>
 {% endblock %}

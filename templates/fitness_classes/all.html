@@ -11,8 +11,12 @@
                     <li>Class: {{ fitness_class.title }}</li>
                     <li>Type: {{ fitness_class.type }}</li>
                     <li>Duration: {{ fitness_class.duration}}mins</li>
-                    <a href="/classes/{{ fitness_class.id }}/show">View class details...</a>
-                    <a href="/classes/{{ fitness_class.id }}/bookings">View class bookings...</a>
+                    <nav>
+                        <ul class="sub_menu">
+                            <a href="/classes/{{ fitness_class.id }}/show">View class details...</a>
+                            <a href="/classes/{{ fitness_class.id }}/bookings">View class bookings...</a>
+                        </ul>
+                    </nav>
                 </ul>
             </li>
         {% endfor %}
