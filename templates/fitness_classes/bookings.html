@@ -3,15 +3,26 @@
     <h2>Members Booked In for {{fitness_class.title}}</h2>
     <p>The following members have booked a slot in the {{fitness_class.title}} class:</p>
     <section>
-    <ul class="list_members">
+        <table class="show_all">
+            <tbody>
         {% for member in members %}
-            <li class="row">  
-                <ul>
-                    <li>Name. {{ member.full_name()}}</li>
-                    <li>Membership No: {{ member.membership_num}}</li>
-                </ul>
-            </li>
-        {% endfor %}
-    </ul>
+        <tr>
+            <td>
+                <table class="show_details">
+                <tr>
+                    <td>Name. {{ member.full_name()}}</td>
+                    <td>Membership No: {{ member.membership_num}}</td>
+                    <td>
+                        <form action="/bookings/{{ bookings[members.index(member)] }}/delete_member_booking" method="POST">
+                            <input type="submit" value="CANCEL Booking">
+                        </form>
+                    </td>
+                </tr>
+            </table>
+            </td>
+        </tr>   
+    {% endfor %}
+</tbody>
+</table>
 </section>
 {% endblock %}

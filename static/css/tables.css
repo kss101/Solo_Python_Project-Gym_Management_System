@@ -1,0 +1,81 @@
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.show_all th {
+    text-align: left;
+    color: #D0DDD7;
+}
+
+th, td{
+    margin: 10px;
+    padding: 10px;
+}
+
+thead > tr {
+    background-color: #7E846B;
+}
+
+.show_all tbody tr:nth-child(even) {
+    background-color: #D0DDD7;
+    color: #2F2504;
+}
+
+.show_all tbody tr:nth-child(odd) {
+    background-color: white;
+    color: #2F2504;
+}
+
+td > a {
+    margin: 0;
+    padding: 10px 10px;
+    text-decoration: none;
+    background-color:  #D0DDD7;
+    text-align: center;
+}
+
+td > a, a:visited {
+    color: #2F2504;
+}
+
+td > a:hover, a:active, a:focus {
+    background-color: #A5AE9E;
+    color: #2F2504;
+}
+
+table.show_details {
+    table-layout: fixed;
+    width: 100%; 
+}
+
+table.show_details tr:nth-child(even), table.show_details tr:nth-child(odd) {
+    background-color: inherit;
+    color: #2F2504;
+}
+
+table.show_details > div a {
+    border: 1px solid black;
+    margin: 0;
+    width: 100%;
+    border-radius: 4px;
+}
+
+div > a {
+    margin: 0;
+    display: block;
+    padding: 10px 0 10px 0;
+    text-decoration: none;
+    background-color:  #D0DDD7;
+    text-align: center;
+    width: 100%;
+}
+
+div > a, a:visited {
+    color: #2F2504;
+}
+
+div > a:hover, a:active, a:focus {
+    background-color: #A5AE9E;
+    color: #2F2504;
+}

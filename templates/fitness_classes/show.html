@@ -1,18 +1,32 @@
 {% extends "base.html" %}
     {% block content %}
     <h2>{{fitness_class.title}}  Class Details</h2>
-        <section>
-            <ul>
-                <li>Title: {{ fitness_class.title}}</li>
-                <li>Type: {{ fitness_class.type }}</li>
-                <li>Duration: {{ fitness_class.duration }}</li>
-                <a href="/classes/{{ fitness_class.id }}/bookings">View class bookings...</a>
-                <a href="/classes/{{ fitness_class.id }}/edit">Edit/Update Fitness class details...</a>
-                <hr />
-            </ul>
-            <form action="/classes/{{ fitness_class.id }}/delete" method="POST">
-                <button type="submit">Delete {{ fitness_class.title }} Class</button>
-            </form>
+    <section>
+        <table class="show_details">
+            <tr>
+                <td>Title:</td>
+                <td>{{ fitness_class.title}}</td>
+                <td><div><a href="/classes/{{ fitness_class.id }}/bookings">View class bookings...</a></div></td>
+            </tr>
+            <tr>
+                <td>Type:</td>
+                <td>{{ fitness_class.type }}</td>
+                <td><div><a href="/classes/{{ fitness_class.id }}/edit">Edit/Update Fitness class details...</a></div></td>
+            </tr>
+            <tr>
+                <td>Duration:</td>
+                <td>{{ fitness_class.duration }} mins.</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td colspan=2></td>
+                <td >
+                    <form action="/classes/{{ fitness_class.id }}/delete" method="POST">
+                        <input type="submit" value="Delete {{ fitness_class.title }} Class">
+                    </form>
+                </td>
+            </tr>
+
         </section>
 
 {% endblock %}

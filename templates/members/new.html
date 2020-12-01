@@ -3,7 +3,8 @@
     <h2>Add New Member</h2>
     <p>To add a new member to the system, please enter the following details:</p>
     <p>{{message}}</p>
-        <section>
+    <section class="form_container">
+        <section class="form">
             <form action="/members" method="POST">
                     <label for="first_name">First Name:</label>
                     <br>
@@ -39,4 +40,6 @@
                 <input type="submit" value="Add New Member">
             </form>
         </section>
+        <img src={{ url_for('static', filename='images/stretching.jpeg') }} alt="Member Stretching" width="325px" height="250px">
+    </section>
 {% endblock %}

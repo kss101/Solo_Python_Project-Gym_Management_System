@@ -1,30 +1,28 @@
 {% extends "base.html" %}
-    {% block content %}
-    <h2>Fitness Class Bookings for {{member.first_name}} {{ member.last_name}}</h2>
-    <p>The member {{member.first_name}} {{ member.last_name}} has the following fitness classes booked:</p>
-    <a href="/bookings/{{member.id}}/new">Book a class</a>
-    <section>
-        <ul class="list_classes">
-            {% for fitness_class in fitness_classes %}
-                <li class="row">
-                    <ul>
-                        <li>Title: {{ fitness_class.title}}</li>
-                        <li>Type: {{ fitness_class.type }}</li>
-                        <li>Duration: {{ fitness_class.duration }} mins</li>
-                        <nav>
-                            <ul class="sub_menu">
-                                <li>
-                                    <form action="/bookings/{{ bookings[fitness_classes.index(fitness_class)] }}/delete" method="POST">
-                                    <button type="submit">CANCEL Booking</button>
-                                    </form>
-                                </li>
-                            </ul>
-                        </nav>
-                    </ul>
-                </li>
-           
-            {% endfor %}
-        </ul>
-    
+{% block content %}
+<h2>Fitness Class Bookings for {{member.first_name}} {{ member.last_name}}</h2>
+<a href="/bookings/{{member.id}}/new">Book a class</a>
+<p>The member {{member.first_name}} {{ member.last_name}} has the following fitness classes booked:</p>
+<section>
+    <table class="show_all">
+        <tbody>
+        {% for fitness_class in fitness_classes %}
+            <tr>
+                <td>
+                    <table class="show_details">
+                    <tr>
+                        <td>{{ fitness_class.title}}</td>
+                        <td>
+                            <form action="/bookings/{{ bookings[fitness_classes.index(fitness_class)] }}/delete_class_booking" method="POST">
+                                <input type="submit" value="CANCEL Booking">
+                            </form>
+                        </td>
+                    </tr>
+                </table>
+                </td>
+            </tr>   
+        {% endfor %}
+    </tbody>
+    </table>
 </section>
 {% endblock %}

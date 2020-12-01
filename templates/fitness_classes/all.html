@@ -4,22 +4,29 @@
     <p>Would you like to: </p>
     <a href="/classes/new">Add New Class</a>
     <section>
-    <ul class="list_classes">
-        {% for fitness_class in fitness_classes %}
-            <li class="row">
-                <ul>
-                    <li>Class: {{ fitness_class.title }}</li>
-                    <li>Type: {{ fitness_class.type }}</li>
-                    <li>Duration: {{ fitness_class.duration}}mins</li>
-                    <nav>
-                        <ul class="sub_menu">
+        <table class="show_all">
+            <thead>
+                <tr>
+                    <th>Class</th>
+                    <th>Type</th>
+                    <th>Duration</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for fitness_class in fitness_classes %}
+                    <tr>
+                        <td>{{ fitness_class.title }}</td>
+                        <td>{{ fitness_class.type }}</td>
+                        <td>{{ fitness_class.duration}}mins</td>
+                    </tr>
+                    <tr>
+                        <td  colspan="3">
                             <a href="/classes/{{ fitness_class.id }}/show">View class details...</a>
                             <a href="/classes/{{ fitness_class.id }}/bookings">View class bookings...</a>
-                        </ul>
-                    </nav>
-                </ul>
-            </li>
-        {% endfor %}
-    </ul>
-</section>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </section>
 {% endblock %}

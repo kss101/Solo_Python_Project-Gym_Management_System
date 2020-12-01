@@ -1,25 +1,35 @@
 {% extends "base.html" %}
     {% block content %}
     <h2>View Member</h2>
-
-        <section>
-            <ul>
-                <li>Fist Name: {{ member.first_name }}</li>
-                <li>Last Name: {{ member.last_name }}</li>
-                <li>D.o.B: {{ member.date_of_birth }}</li>
-                <li>Membership No: {{ member.membership_num }}</li>
-
-            </ul>
-            <nav>
-                <ul class="sub_menu">
-                    <li><a href="/members/{{ member.id }}/bookings">View class bookings...</a></li>
-                    <li><a href="/members/{{ member.id }}/edit">Edit/Update Member details...</a></li>
-                    <li>
-                        <form action="/members/{{ member.id }}/delete" method="POST">
-                            <button type="submit">CANCEL Membership</button>
-                        </form>
-                    </li>
-                </ul>
-            </nav>
-        </section>
+    <section>
+        <table class="show_details">
+            <tr>
+                <td>First Name:</td>
+                <td>{{ member.first_name }}</td>
+                <td><div><a href="/members/{{ member.id }}/edit">Edit/Update Member details...</a></div></td>
+            </tr>
+            <tr>
+                <td>Last Name:</td>
+                <td>{{ member.last_name }}</td> 
+                <td><div><a href="/members/{{ member.id }}/bookings">View class bookings...</a></div></td>
+            </tr>
+            <tr>
+                <td>Date of Birth:</td>
+                <td>{{ member.date_of_birth }}</td> 
+                <td></td>
+            </tr>
+            <tr>
+                <td>Membership No.</td>
+                <td>{{ member.membership_num }}</td> 
+            </tr>
+            <tr>
+                <td colspan="2"></td>  
+                <td>
+                    <form action="/members/{{ member.id }}/delete" method="POST">
+                        <input type="submit" value="CANCEL Membership">
+                    </form>
+                </td>
+            </tr>
+        </table>
+    </section>
 {% endblock %}

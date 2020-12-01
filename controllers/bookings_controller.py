@@ -49,7 +49,13 @@ def create_bookins(id):
 
 
 # Delete a Member's Fitness Class booking from the system
-@bookings_blueprint.route("/bookings/<id>/delete", methods=["POST"])
-def delete_booking(id):
+@bookings_blueprint.route("/bookings/<id>/delete_class_booking", methods=["POST"])
+def delete_class_booking(id):
     booking_repository.delete(id)
     return redirect("/members/all")
+
+# Delet a Member booking from a Fitness Class in the system
+@bookings_blueprint.route("/bookings/<id>/delete_member_booking", methods=["POST"])
+def delete_member_booking(id):
+    booking_repository.delete(id)
+    return redirect("/classes/all")
