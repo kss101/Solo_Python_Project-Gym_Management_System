@@ -4,7 +4,7 @@ body {
 }
 
 body > header > nav {
-    width: 102%;
+    width: 99%;
     background-color: #A5AE9E;
     display: flex;
     justify-content: space-between;
@@ -19,6 +19,7 @@ nav > ul.menu  {
     list-style-type: none;
     margin: 0;
     margin-left: 25px;
+    margin-right: -10px;
     padding: 0;
     display: flex;
     justify-content: space-between;
@@ -154,6 +155,12 @@ textarea {
     box-sizing: border-box;
     width: 100%;
     font-family: Arial, Helvetica, sans-serif;
+}
+
+.image_panel {
+
+    display: flex;
+    justify-content: space-evenly;
 }
 
   /* Style the submit button */

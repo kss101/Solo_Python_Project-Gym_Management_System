@@ -3,6 +3,10 @@
     <h2>Members Area</h2>
     <p>Would you like to: </p>
     <a href="members/new">Add New Member</a>
-    <a href="members/all">View Members</a>
-
+    <a href="members/all">View Existing Members</a>
+    <div class="image_panel">
+        <img src={{ url_for('static', filename='images/stretching.jpeg') }} alt="Member Stretching" width="325px" height="250px">
+        <img src={{ url_for('static', filename='images/members3.jpeg') }} alt="Members chatting" width="325px" height="250px">
+        <img src={{ url_for('static', filename='images/treadmill.jpeg') }} alt="Member on treadmill" width="325px" height="250px">
+    </div>
 {% endblock %}

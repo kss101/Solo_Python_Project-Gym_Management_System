@@ -3,6 +3,10 @@
     <h2>Fitness Classes Area</h2>
     <p>Would you like to: </p>
     <a href="classes/new">Add New Fitness Class</a>
-    <a href="classes/all">View Fitness Classes</a>
-
+    <a href="classes/all">View Current Fitness Classes</a>
+    <div class="image_panel">
+        <img src={{ url_for('static', filename='images/spin class.jpeg') }} alt="Spin Class" width="325px" height="250px">
+        <img src={{ url_for('static', filename='images/kettlebells.jpeg') }} alt="A selection of kettlebell weights" width="325px" height="250px">
+        <img src={{ url_for('static', filename='images/fitnessclass.jpeg') }} alt="Members participating in exercise class" width="325px" height="250px">
+    </div>
 {% endblock %}
