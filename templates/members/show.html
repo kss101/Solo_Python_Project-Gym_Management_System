@@ -11,7 +11,11 @@
             <tr>
                 <td>Last Name:</td>
                 <td>{{ member.last_name }}</td> 
-                <td><div><a href="/members/{{ member.id }}/bookings">View class bookings...</a></div></td>
+                <td>
+                    {% if member.is_active == "True" or member.is_active == True %}
+                        <div><a href="/members/{{ member.id }}/bookings">View class bookings...</a></div>
+                    {% endif %}
+                </td>
             </tr>
             <tr>
                 <td>Date of Birth:</td>
@@ -21,6 +25,18 @@
             <tr>
                 <td>Membership No.</td>
                 <td>{{ member.membership_num }}</td> 
+            </tr>
+            <tr>
+                <td>Membership Type.</td>
+                <td>{{ member.membership_type }}</td> 
+            </tr>
+            <tr>
+                <td>Membership Active?</td>
+                {% if member.is_active == True or member.is_active == "True"%}
+                <td>Yes</td>
+                {% else %}
+                <td>No</td>
+                {% endif %}
             </tr>
             <tr>
                 <td colspan="2"></td>  

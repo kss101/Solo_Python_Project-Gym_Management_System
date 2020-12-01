@@ -2,6 +2,7 @@ from flask import Blueprint, Flask, redirect, render_template, request
 
 from models.member import Member
 import repositories.member_repository as member_repository
+import repositories.booking_repository as booking_repository
 
 members_blueprint = Blueprint("members", __name__)
 
@@ -10,17 +11,20 @@ members_blueprint = Blueprint("members", __name__)
 def members():
     return render_template("members/index.html")
 
+
 # Get All Members
 @members_blueprint.route("/members/all")
 def all_members():
     members = member_repository.select_all()
     return render_template("members/all.html", members=members)
 
+
 # Get specific Member
-@members_blueprint.route('/members/<id>/show')
+@members_blueprint.route('/members/<id>/show', methods=["GET"])
 def show_member(id):
     member = member_repository.select(id)
     return render_template("members/show.html", member=member)
+
 
 # Add New Member
 # GET '/members/new' --> show html form to create a new member
@@ -35,9 +39,11 @@ def create_member():
     last_name = request.form['last_name']
     date_of_birth = request.form['date_of_birth']
     membership_num = request.form['membership_num']
+    membership_type = request.form['membership_type']
+    is_active = request.form['is_active']
     membership_num_check = member_repository.check_membership_num_exists(membership_num)
     if membership_num_check == False:
-        member = Member(first_name, last_name, date_of_birth, membership_num)
+        member = Member(first_name, last_name, date_of_birth, membership_num, membership_type, is_active)
         member_repository.save(member)
         return redirect('/members')
     else:
@@ -53,14 +59,18 @@ def edit_member(id):
 
 
 # UPDATE
-@members_blueprint.route("/members/<id>", methods=["POST"])
+@members_blueprint.route("/members/<id>/show", methods=["POST"])
 def update_member(id):
     first_name = request.form['first_name']
     last_name = request.form['last_name']
     date_of_birth = request.form['date_of_birth']
     membership_num = request.form['membership_num']
-    member = Member(first_name, last_name, date_of_birth, membership_num, id)
+    membership_type = request.form['membership_type']
+    is_active = request.form['is_active']
+    member = Member(first_name, last_name, date_of_birth, membership_num, membership_type, is_active, id)
     member_repository.update(member)
+    if member.is_active == "False" or member.is_active == False:
+        booking_repository.delete_member_bookings(member.id)
     return render_template("members/show.html", member=member)
 
 

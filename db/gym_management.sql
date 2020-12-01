@@ -7,7 +7,9 @@ CREATE TABLE members (
     first_name VARCHAR(255),
     last_name VARCHAR(255),
     date_of_birth DATE,
-    membership_num INT
+    membership_num INT,
+    membership_type VARCHAR(255),
+    is_active BOOLEAN
 );
 
 CREATE TABLE fitness_classes(

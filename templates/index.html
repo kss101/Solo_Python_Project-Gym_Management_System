@@ -1,7 +1,5 @@
 {% extends "base.html" %}
 {% block content %}
-
-
     <article>
         <h3>Welcome to the Gym Management System</h3>
         <p>This application allows you to:
@@ -19,10 +17,9 @@
             </ul>
         </p>
     </article>
-
-<div class="image_panel">
-    <img src={{ url_for('static', filename='images/spin class.jpeg') }} alt="Spin Class" width="325px" height="250px">
-    <img src={{ url_for('static', filename='images/kettlebells.jpeg') }} alt="A selection of kettlebell weights" width="325px" height="250px">
-    <img src={{ url_for('static', filename='images/fitnessclass.jpeg') }} alt="Members participating in exercise class" width="325px" height="250px">
-</div>
+    <div class="image_panel">
+        <img src={{ url_for('static', filename='images/spin class.jpeg') }} alt="Spin Class" width="325px" height="250px">
+        <img src={{ url_for('static', filename='images/kettlebells.jpeg') }} alt="A selection of kettlebell weights" width="325px" height="250px">
+        <img src={{ url_for('static', filename='images/fitnessclass.jpeg') }} alt="Members participating in exercise class" width="325px" height="250px">
+    </div>
 {% endblock %}

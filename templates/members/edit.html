@@ -4,7 +4,7 @@
     <p>To edit a member's details in the system, please use the following form:</p>
     <p>{{message}}</p>
         <section>
-            <form action="/members/{{member.id}}" method="POST">
+            <form action="/members/{{ member.id}}/show" method="POST">
                 <label for="first_name">First Name:</label><br>
                 <input type="text" 
                     name="first_name"
@@ -33,6 +33,34 @@
                     id="membership_num" 
                     value="{{member.membership_num}}"
                     required>
+                <br>
+                <label for="membership_type">Membership Type:</label><br>
+                <select name="membership_type" id="membership_type">
+                    {% if member.membership_type == "Standard" %}
+                        <option value="Standard" selected>Standard</option>
+                    {% else %}
+                        <option value="Standard">Standard</option>
+                    {% endif %}
+                    {% if member.membership_type == "Premium" %}
+                        <option value="Premium" selected>Premium</option>
+                    {% else %}
+                        <option value="Premium">Premium</option>
+                    {% endif %}
+                </select>
+                <br>
+                <label for="is_active">Active Membership:</label><br>
+                <select name="is_active" id="is_active">
+                    {% if member.is_active == "True" %}
+                        <option value="True" selected>Yes</option>
+                    {% else %}
+                        <option value="True">Yes</option>
+                    {% endif %}
+                    {% if member.is_active == False %}
+                        <option value="False" selected>No</option>
+                    {% else %}
+                        <option value="False">No</option>
+                    {% endif %}
+                </select>
                 <input type="submit" value="Save Changes">
             </form>
         </section>

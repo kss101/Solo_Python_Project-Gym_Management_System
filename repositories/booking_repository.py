@@ -30,6 +30,11 @@ def delete(id):
     values = [id]
     run_sql(sql, values)
 
+def delete_member_bookings(member_id):
+    sql = "DELETE FROM fitness_class_member_bookings WHERE member_id = %s"
+    values = [member_id]
+    run_sql(sql, values)
+
 
 def get_fitness_class_bookings(fitness_class):
     members= []
@@ -39,7 +44,7 @@ def get_fitness_class_bookings(fitness_class):
     values = [fitness_class.id]
     results = run_sql(sql, values)
     for row in results:
-        member = Member(row['first_name'], row['last_name'], row['date_of_birth'], row['membership_num'], row['id'] )
+        member = Member(row['first_name'], row['last_name'], row['date_of_birth'], row['membership_num'], ['membership_type'], ['is_active'], row['id'] )
         members.append(member)
         bookings.append(row['booking_id'])
     return (members, bookings)

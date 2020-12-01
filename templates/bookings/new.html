@@ -3,13 +3,18 @@
 <h2>Fitness Class Booking for {{member.full_name()}}</h2>
 <p>Please select Fitness Class...</p>
 <section>
-        <ul class="list_classes">
+    <table class="show_all">
+
             {% for fitness_class in fitness_classes %}
-            <li class="row">
-                <ul>
+            <tr>
+                <td> {{ fitness_class.title}} </td>
+                <td>
                     <form action="/members/{{ member.id }}/bookings/" method="POST">
-                        <li class="fitness_class">{{ fitness_class.title}}<input type="hidden" name="fitness_class" id="fitness_class" value="{{ fitness_class.id }}"><button type="submit">Book Class</button></li>
+                        <input type="hidden" name="fitness_class" id="fitness_class" value="{{ fitness_class.id }}">
+                        <input type="submit" value="Book Class">
                     </form>
+                </td>
+
                 </ul>
             </li>
                     {% endfor %}

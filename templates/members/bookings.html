@@ -1,8 +1,13 @@
 {% extends "base.html" %}
 {% block content %}
 <h2>Fitness Class Bookings for {{member.first_name}} {{ member.last_name}}</h2>
+{% if member.is_active == True %}
 <a href="/bookings/{{member.id}}/new">Book a class</a>
 <p>The member {{member.first_name}} {{ member.last_name}} has the following fitness classes booked:</p>
+{% else %}
+<p>The member {{member.full_name() }} has an <b>INACTIVE</b> membership and  currently cannot be booked into any class! Please confirm if they wish to reinstate their membership.</p>
+{% endif %}
+
 <section>
     <table class="show_all">
         <tbody>

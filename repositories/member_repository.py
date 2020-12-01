@@ -4,8 +4,8 @@ from models.fitness_class import FitnessClass
 import repositories.fitness_class_repository as fitness_class_repository
 
 def save(member):
-    sql = "INSERT INTO members (first_name, last_name, date_of_birth, membership_num) VALUES (%s, %s, %s, %s) RETURNING id"
-    values = [member.first_name, member.last_name, member.date_of_birth, member.membership_num]
+    sql = "INSERT INTO members (first_name, last_name, date_of_birth, membership_num, membership_type, is_active) VALUES (%s, %s, %s, %s, %s, %s) RETURNING id"
+    values = [member.first_name, member.last_name, member.date_of_birth, member.membership_num, member.membership_type, member.is_active]
     results = run_sql(sql, values)
     id = results[0]['id']
     member.id = id
@@ -16,7 +16,7 @@ def select_all():
     sql = "SELECT * FROM members"
     results = run_sql(sql)
     for result in results:
-        member = Member(result["first_name"], result["last_name"], result["date_of_birth"], result["membership_num"], result["id"])
+        member = Member(result["first_name"], result["last_name"], result["date_of_birth"], result["membership_num"], result["membership_type"], result["is_active"], result["id"])
         members.append(member)
     return members
 
@@ -26,7 +26,7 @@ def select(id):
     values = [id]
     result = run_sql(sql, values)[0]
     if result is not None:
-        member = Member(result['first_name'], result['last_name'], result['date_of_birth'], result['membership_num'], result['id'] )
+        member = Member(result['first_name'], result['last_name'], result['date_of_birth'], result['membership_num'], result["membership_type"], result["is_active"],  result['id'] )
     return member
 
 def check_membership_num_exists(membership_num):
@@ -41,9 +41,10 @@ def check_membership_num_exists(membership_num):
 
 
 def update(member):
-    sql = "UPDATE members SET (first_name, last_name, date_of_birth, membership_num) = (%s, %s, %s, %s) WHERE id = %s"
-    values = [member.first_name, member.last_name, member.date_of_birth, member.membership_num, member.id]
+    sql = "UPDATE members SET (first_name, last_name, date_of_birth, membership_num, membership_type, is_active) = (%s, %s, %s, %s, %s, %s) WHERE id = %s"
+    values = [member.first_name, member.last_name, member.date_of_birth, member.membership_num, member.membership_type, member.is_active, member.id]
     run_sql(sql, values)
+    return member
 
 
 def bookings(member):
@@ -59,6 +60,7 @@ def bookings(member):
         bookings.append(row['booking_id'])
 
     return (fitness_classes, bookings)
+
 
 def delete_all():
     sql = "DELETE FROM members"

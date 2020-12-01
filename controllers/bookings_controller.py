@@ -6,10 +6,12 @@ import repositories.fitness_class_repository as fitness_class_repository
 import repositories.member_repository as member_repository
 
 bookings_blueprint = Blueprint("bookings", __name__)
+
 #INDEX
 @bookings_blueprint.route("/bookings")
 def booking():
     return render_template("bookings/index.html")
+
 
 # View a Member's Fitness Class Bookings
 @bookings_blueprint.route("/members/<id>/bookings/")
@@ -19,6 +21,7 @@ def bookings(id):
     bookings = member_repository.bookings(member)[1]
     return render_template("/members/bookings.html", bookings=bookings, fitness_classes=fitness_classes, member=member)
 
+
 # View a Fitness Class' Booked Members
 @bookings_blueprint.route("/classes/<id>/bookings/")
 def bookings_members(id):
@@ -27,6 +30,7 @@ def bookings_members(id):
     bookings = booking_repository.get_fitness_class_bookings(fitness_class)[1]
     return render_template("/fitness_classes/bookings.html", bookings=bookings, fitness_class=fitness_class, members=members)
 
+
 # Add New Fitness Class Booking
 # GET '/bookings/new' --> show html form to create a new booking
 @bookings_blueprint.route("/bookings/<id>/new", methods=["GET"])
@@ -34,6 +38,7 @@ def new_booking(id):
     member = member_repository.select(id)
     fitness_classes = fitness_class_repository.select_all()
     return render_template("bookings/new.html", member=member, fitness_classes=fitness_classes)
+
 
 # POST '/bookings' --> handle the POST from the new bookings form
 @bookings_blueprint.route("/members/<id>/bookings/", methods=["POST"])
@@ -50,6 +55,7 @@ def create_bookins(id):
 def delete_class_booking(id):
     booking_repository.delete(id)
     return redirect("/members/all")
+
 
 # Delet a Member booking from a Fitness Class in the system
 @bookings_blueprint.route("/bookings/<id>/delete_member_booking", methods=["POST"])
