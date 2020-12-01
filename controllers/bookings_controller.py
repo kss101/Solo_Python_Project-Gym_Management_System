@@ -42,9 +42,6 @@ def create_bookins(id):
     fitness_class_id = request.form['fitness_class']
     booking = Booking(member.id, fitness_class_id)
     booking_repository.save(booking)
-    # bookings = member_repository.bookings(member)
-    # fitness_classes = member_repository.bookings(member)[0]
-    # # return render_template("/members/bookings.html", bookings=bookings, fitness_classes=fitness_classes, member=member)
     return redirect("/members/all")
 
 

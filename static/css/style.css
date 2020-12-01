@@ -150,6 +150,12 @@ input[type=text], input[type=date], input[type=number], select {
     box-sizing: border-box;
   }
 
+textarea {
+    box-sizing: border-box;
+    width: 100%;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
   /* Style the submit button */
 input[type=submit] {
     width: 100%;

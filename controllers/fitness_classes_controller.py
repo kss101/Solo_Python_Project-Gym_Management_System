@@ -36,7 +36,8 @@ def create_fitness_class():
     title= request.form['title']
     type = request.form['type']
     duration = request.form['duration']
-    fitness_class = FitnessClass(title, type, duration)
+    discription = request.form['discription']
+    fitness_class = FitnessClass(title, type, duration, discription)
     fitness_class_repository.save(fitness_class)
     return redirect('/classes')
 
@@ -52,7 +53,8 @@ def update__fitness_class(id):
     title = request.form['title']
     type = request.form['type']
     duration = request.form['duration']
-    fitness_class = FitnessClass(title, type, duration, id)
+    discription = request.form['discription']
+    fitness_class = FitnessClass(title, type, duration, discription, id)
     fitness_class_repository.update(fitness_class)
     return render_template("/fitness_classes/show.html", fitness_class=fitness_class)
 

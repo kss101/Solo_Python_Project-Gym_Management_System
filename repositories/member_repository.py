@@ -54,7 +54,7 @@ def bookings(member):
     values = [member.id]
     results = run_sql(sql, values)
     for row in results:
-        fitness_class = FitnessClass(row['title'], row['type'], row['duration'], row['id'] )
+        fitness_class = FitnessClass(row['title'], row['type'], row['duration'], row['discription'], row['id'] )
         fitness_classes.append(fitness_class)
         bookings.append(row['booking_id'])
 

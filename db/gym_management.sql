@@ -14,7 +14,8 @@ CREATE TABLE fitness_classes(
     id SERIAL PRIMARY KEY,
     title VARCHAR(255),
     duration INT,
-    type VARCHAR(255)   
+    type VARCHAR(255),
+    discription TEXT 
 );
 
 CREATE TABLE fitness_class_member_bookings(

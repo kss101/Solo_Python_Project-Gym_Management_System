@@ -1,16 +1,15 @@
 {% extends "base.html" %}
     {% block content %}
-    <h2>Add New Fitness Class</h2>
-    <p>To add a new class to the system, please enter the following details:</p>
+    <h2>Edit {{fitness_class.title}}</h2>
+    <p>To edit the details of our {{fitness_class.title}} class, please use the following form:</p>
     <p>{{message}}</p>
         <section>
             <form action="/classes/{{ fitness_class.id }}" method="POST">
-
                     <label for="title">Title:</label><br>
                     <input type="text" 
                         name="title"
                         id="title" 
-                        value={{fitness_class.title}}
+                        value="{{ fitness_class.title }}"
                         required 
                         autofocus>
                     <br>
@@ -36,14 +35,25 @@
                         {% else %}
                             <option value="LITT">LIIT</option>
                         {% endif %}
+                        {% if fitness_class.type == "Conditioning" %}
+                        <option value="Conditioning" selected>Conditioning</option>
+                        {% else %}
+                            <option value="Conditioning">Conditioning</option>
+                        {% endif %}
                     </select>
                     <br>
                     <label for="duration">Duration:</label><br>
                     <input type="number" 
                         name="duration"
                         id="duration" 
-                        value={{fitness_class.duration}}
+                        value="{{fitness_class.duration}}"
                         required>
+                    <label for="discription">Discription:</label><br>
+                    <textarea rows="5"
+                        name="discription"
+                        id="discription" 
+                        required>{{fitness_class.discription}}
+                    </textarea>
                 <input type="submit" value="Save Changes">
             </form>
         </section>

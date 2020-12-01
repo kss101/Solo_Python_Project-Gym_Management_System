@@ -2,8 +2,8 @@ from db.run_sql import run_sql
 from models.fitness_class import FitnessClass
 
 def save(fitness_class):
-    sql = "INSERT INTO fitness_classes (title, type, duration) VALUES (%s, %s, %s) RETURNING id"
-    values = [fitness_class.title, fitness_class.type, fitness_class.duration]
+    sql = "INSERT INTO fitness_classes (title, type, duration, discription) VALUES (%s, %s, %s, %s) RETURNING id"
+    values = [fitness_class.title, fitness_class.type, fitness_class.duration, fitness_class.discription]
     results = run_sql(sql, values)
     id = results[0]['id']
     fitness_class.id = id
@@ -14,7 +14,7 @@ def select_all():
     sql = "SELECT * FROM fitness_classes"
     results = run_sql(sql)
     for result in results:
-        fitness_class = FitnessClass(result["title"], result["type"], result["duration"], result["id"])
+        fitness_class = FitnessClass(result["title"], result["type"], result["duration"], result['discription'],result["id"])
         fitness_classes.append(fitness_class)
     return fitness_classes
 
@@ -24,12 +24,12 @@ def select(id):
     values = [id]
     result = run_sql(sql, values)[0]
     if result is not None:
-        fitness_class = FitnessClass(result['title'], result['type'], result['duration'], result['id'] )
+        fitness_class = FitnessClass(result['title'], result['type'], result['duration'], result['discription'], result['id'] )
     return fitness_class
 
 def update(fitness_class):
-    sql = "UPDATE fitness_classes SET (title, type, duration = (%s, %s, %s) WHERE id = %s"
-    values = [fitness_class.title, fitness_class.type, fitness_class.duration, fitness_class.id]
+    sql = "UPDATE fitness_classes SET (title, type, duration, discription = (%s, %s, %s, %s) WHERE id = %s"
+    values = [fitness_class.title, fitness_class.type, fitness_class.duration, fitness_class.discription, fitness_class.id]
     run_sql(sql, values)
 
 def delete_all():

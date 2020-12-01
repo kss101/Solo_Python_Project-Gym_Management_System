@@ -18,9 +18,10 @@
                 <br>
                 <select name="type" id="type">
                     <option value="Cardio">Cardio</option>
-                    <option value="Gym Floor">Gyme Floor</option>
+                    <option value="Gym Floor">Gym Floor</option>
                     <option value="HIIT">HIIT</option>
                     <option value="LITT">LIIT</option>
+                    <option value="Conditioning">Conditioning</option>
                 </select>
                 <br>
                 <label for="duration">Duration (in mins.):</label><br>
@@ -28,6 +29,13 @@
                     name="duration"
                     id="duration" 
                     required>
+                <label for="discription">Discription:</label><br>
+                <textarea rows="5"
+                    name="discription"
+                    id="discription" 
+                    placeholder="Class discription..." 
+                    required>
+                </textarea>
                 <input type="submit" value="Add New Class">
             </form>
         </section>
