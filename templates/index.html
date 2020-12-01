@@ -1,4 +1,28 @@
 {% extends "base.html" %}
 {% block content %}
-Welcome
+
+
+    <article>
+        <h3>Welcome to the Gym Management System</h3>
+        <p>This application allows you to:
+            <ul> 
+                <li>Add new members and fitness classes to your system</li>
+                <li>View and update class and member details as and when required</li>
+                <li>Cancel memberships and classes when they are no longer needed</li>
+            </ul>
+        </p>
+        <p>You can also use this system to:
+            <ul>
+                <li>Book members into fitness classes</li>
+                <li>View a member's current class bookings</li>
+                <li>Access a list of members booked into any of your classes</li>
+            </ul>
+        </p>
+    </article>
+
+<div class="image_panel">
+    <img src={{ url_for('static', filename='images/spin class.jpeg') }} alt="Spin Class" width="325px" height="250px">
+    <img src={{ url_for('static', filename='images/kettlebells.jpeg') }} alt="A selection of kettlebell weights" width="325px" height="250px">
+    <img src={{ url_for('static', filename='images/fitnessclass.jpeg') }} alt="Members participating in exercise class" width="325px" height="250px">
+</div>
 {% endblock %}
