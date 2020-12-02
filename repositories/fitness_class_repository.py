@@ -28,9 +28,10 @@ def select(id):
     return fitness_class
 
 def update(fitness_class):
-    sql = "UPDATE fitness_classes SET (title, type, duration, discription = (%s, %s, %s, %s) WHERE id = %s"
+    sql = "UPDATE fitness_classes SET (title, type, duration, discription) = (%s, %s, %s, %s) WHERE id = %s"
     values = [fitness_class.title, fitness_class.type, fitness_class.duration, fitness_class.discription, fitness_class.id]
     run_sql(sql, values)
+
 
 def delete_all():
     sql = "DELETE FROM fitness_classes"
