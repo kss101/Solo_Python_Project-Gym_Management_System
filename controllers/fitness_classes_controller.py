@@ -2,6 +2,8 @@ from flask import Blueprint, Flask, redirect, render_template, request
 
 from models.fitness_class import FitnessClass
 import repositories.fitness_class_repository as fitness_class_repository
+from models.fitness_class_type import FitnessClassType
+import repositories.fitness_class_type_repository as type_repository
 
 fitness_classes_blueprint = Blueprint("fitness_classes", __name__)
 
@@ -29,7 +31,8 @@ def show_fitness_class(id):
 # GET '/classes/new' --> show html form to create a new fitness class
 @fitness_classes_blueprint.route("/classes/new", methods=["GET"])
 def new_class():
-    return render_template("fitness_classes/new.html")
+    class_types = type_repository.select_all()
+    return render_template("fitness_classes/new.html", class_types=class_types) 
 
 
 # POST '/classes' --> handle the POST from the new fitness class form
@@ -48,7 +51,8 @@ def create_fitness_class():
 @fitness_classes_blueprint.route("/classes/<id>/edit")
 def edit_fitness_class(id):
     fitness_class = fitness_class_repository.select(id)
-    return render_template('fitness_classes/edit.html', fitness_class=fitness_class)
+    class_types = type_repository.select_all()
+    return render_template('fitness_classes/edit.html', fitness_class=fitness_class, class_types=class_types)
 
 
 # UPDATE Fitness Class
