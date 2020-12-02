@@ -15,13 +15,31 @@
                     <br>
                     <label for="type">Type:</label><br>
                     <select name="type" id="type">
-                        {% for class_type in class_types %}
-                            {% if fitness_class.type == class_type.class_type %}
-                                <option value="{{class_type.class_type}}" selected>{{class_type.class_type}}</option>
-                            {% else %}
-                                <option value="{{class_type.class_type}}">{{class_type.class_type}}</option>
-                            {% endif %}
-                        {% endfor %}
+                        {% if fitness_class.type == "Cardio" %}
+                            <option value="Cardio" selected>Cardio</option>
+                        {% else %}
+                            <option value="Cardio">Cardio</option>
+                        {% endif %}
+                        {% if fitness_class.type == "Gym Floor" %}
+                            <option value="Gym Floor" selected>Gym Floor</option>
+                        {% else %}
+                            <option value="Gym Floor">Gym Floor</option>
+                        {% endif %}
+                        {% if fitness_class.type == "HIIT" %}
+                            <option value="HIIT" selected>HIIT</option>
+                        {% else %}
+                            <option value="HIIT">HIIT</option>
+                        {% endif %}
+                        {% if fitness_class.type == "LIIT" %}
+                            <option value="LITT" selected>LIIT</option>
+                        {% else %}
+                            <option value="LITT">LIIT</option>
+                        {% endif %}
+                        {% if fitness_class.type == "Conditioning" %}
+                        <option value="Conditioning" selected>Conditioning</option>
+                        {% else %}
+                            <option value="Conditioning">Conditioning</option>
+                        {% endif %}
                     </select>
                     <br>
                     <label for="duration">Duration:</label><br>

@@ -1,6 +1,7 @@
 DROP TABLE IF EXISTS fitness_class_member_bookings;
 DROP TABLE IF EXISTS members;
 DROP TABLE IF EXISTS fitness_classes;
+DROP TABLE fitness_class_types;
 
 CREATE TABLE members (
     id SERIAL PRIMARY KEY,
@@ -18,6 +19,11 @@ CREATE TABLE fitness_classes(
     duration INT,
     type VARCHAR(255),
     discription TEXT 
+);
+
+CREATE TABLE fitness_class_types(
+    id SERIAL PRIMARY KEY,
+    class_type VARCHAR(255)
 );
 
 CREATE TABLE fitness_class_member_bookings(
