@@ -40,10 +40,10 @@ def create_member():
     date_of_birth = request.form['date_of_birth']
     membership_num = request.form['membership_num']
     membership_type = request.form['membership_type']
-    is_active = request.form['is_active']
+    # is_active = request.form['is_active']
     membership_num_check = member_repository.check_membership_num_exists(membership_num)
     if membership_num_check == False:
-        member = Member(first_name, last_name, date_of_birth, membership_num, membership_type, is_active)
+        member = Member(first_name, last_name, date_of_birth, membership_num, membership_type)
         member_repository.save(member)
         return redirect('/members')
     else:
