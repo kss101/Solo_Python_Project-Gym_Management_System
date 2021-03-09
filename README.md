@@ -1,4 +1,4 @@
-# week_05_project_gym_management_system
+# CodeClan solo project - gym management system
 First CodeClan project - The Gym
 
 A local gym has asked you to build a piece of software to help them to manage memberships, and register members for classes.
